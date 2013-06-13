@@ -42,8 +42,7 @@ apiList = {
 			type: 'encapsulate',
 			options: {
 				pre: [
-					'var api = new mw.Api();',
-					'api.get( {',
+					'( new mw.Api() ).get( {',
 					'\tprop: \'revisions\',',
 					'\trvprop: \'content\',',
 					'\trvlimit: 1,',
