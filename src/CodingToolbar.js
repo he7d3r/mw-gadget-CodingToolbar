@@ -3,12 +3,24 @@
  * @author: [[User:Helder.wiki]]
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/CodingToolbar.js]] ([[File:User:Helder.wiki/Tools/CodingToolbar.js]])
  */
-/*jslint browser: true, white: true*/
-/*global mediaWiki, jQuery */
-( function ( mw , $ ) {
+/*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, onevar: true */
+/*global jQuery, mediaWiki */
+( function ( mw, $ ) {
 'use strict';
-var jsList, apiList;
+
+var jsList, mwList;
 jsList = {
+	loopOverList : {
+		label: 'Loop sobre uma lista',
+		action: {
+			type: 'encapsulate',
+			options: {
+				pre: 'for( i = 0; i < list.length; i++ ){\n\t',
+				peri: 'list[i];',
+				post: '\n}'
+			}
+		}
+	},
 	closure : {
 		label: 'Closure',
 		action: {
@@ -35,9 +47,9 @@ jsList = {
 	// moreJSButtons: {
 	// }
 };
-apiList = {
+mwList = {
 	textFromAPI : {
-		label: 'Obter texto',
+		label: 'Obter texto via API',
 		action: {
 			type: 'encapsulate',
 			options: {
@@ -57,6 +69,34 @@ apiList = {
 					'.fail( function ( data ) {',
 					'\tconsole.log( data.query );',
 					'} );'
+				].join( '\n' )
+			}
+		}
+	},
+	addPortletLink : {
+		label: 'Inserir link no portlet',
+		action: {
+			type: 'encapsulate',
+			options: {
+				pre: [
+					'function addSomeLink(){',
+					'\t$( mw.util.addPortletLink(',
+					'\t\t\'p-cactions\',',
+					'\t\t\'#\',',
+					'\t\t\'SomeLink\',',
+					'\t\t\'ca-SomeLink\',',
+					'\t\t\'SomeDescriptionForSomeLink\'',
+					'\t) ).click( function( e ) {',
+					'\t\te.preventDefault();'
+				].join( '\n' ) + '\t\t',
+				peri: 'alert( \'Ok\' );',
+				post: [
+					'\t} );',
+					'}',
+					'',
+					'if ( true ) {',
+					'\t$( addSomeLink );',
+					'}'
 				].join( '\n' )
 			}
 		}
@@ -81,7 +121,7 @@ function customizeToolbar() {
 					'mw-api-samples': {
 						'label': 'API do MW',
 						'type': 'select',
-						'list': apiList
+						'list': mwList
 					}
 				}
 			}
