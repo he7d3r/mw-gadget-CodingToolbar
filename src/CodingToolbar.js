@@ -88,7 +88,7 @@ mwList = {
 					'\t\t\'SomeDescriptionForSomeLink\'',
 					'\t) ).click( function( e ) {',
 					'\t\te.preventDefault();'
-				].join( '\n' ) + '\t\t',
+				].join( '\n' ) + '\n\t\t',
 				peri: 'alert( \'Ok\' );',
 				post: [
 					'\t} );',
