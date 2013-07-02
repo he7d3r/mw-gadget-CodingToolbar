@@ -91,7 +91,7 @@ mwList = {
 				].join( '\n' ) + '\n\t\t',
 				peri: 'alert( \'Ok\' );',
 				post: [
-					'\t} );',
+					'\n\t} );',
 					'}',
 					'',
 					'if ( true ) {',
@@ -119,7 +119,7 @@ function customizeToolbar() {
 						'list': jsList
 					},
 					'mw-api-samples': {
-						'label': 'API do MW',
+						'label': 'MediaWiki',
 						'type': 'select',
 						'list': mwList
 					}
