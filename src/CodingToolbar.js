@@ -3,8 +3,6 @@
  * @author: Helder (https://github.com/he7d3r)
  * @license: CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0/>
  */
-/*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, onevar: true */
-/*global jQuery, mediaWiki */
 ( function ( mw, $ ) {
 'use strict';
 
@@ -34,8 +32,6 @@ jsList = {
 						'{subst:PAGENAME}}]] ([[File:User:{' +
 						'{subst:PAGENAME}}]])',
 					' */',
-					'/*jslint browser: true, white: true*/',
-					'/*global jQuery, mediaWiki */',
 					'( function ( mw, $ ) {',
 					'\'use strict\';\n\n'
 				].join( '\n' ),
@@ -142,6 +138,7 @@ if ( $.inArray( mw.config.get('wgAction'), [ 'edit', 'submit' ] ) !== -1 &&
 				$.ready
 			).then( customizeToolbar );
 		}
+		/*jshint eqeqeq:true*/
 	} );
 }
 
