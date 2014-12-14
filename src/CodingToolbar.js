@@ -130,7 +130,7 @@
 		/\.js$/.test( mw.config.get( 'wgTitle' ) )
 	) {
 		mw.loader.using( 'user.options', function () {
-			// This can be the string "0" if the user disabled the preference ([[bugzilla:52542#c3]])
+			// This can be the string "0" if the user disabled the preference ([[phab:T54542#555387]])
 			/*jshint eqeqeq:false*/
 			if ( mw.user.options.get( 'usebetatoolbar' ) == 1 ) {
 				$.when(
